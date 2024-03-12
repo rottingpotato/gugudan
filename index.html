@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구구구구국 너 내 구구단이 되어라!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        input, button {
+            margin-top: 20px;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h2>구구구구국 너 내 구구단이 되어라!</h2>
+    <label for="gugudanInput">몇 단이 궁금하신지요:</label>
+    <input type="number" id="gugudanInput" min="2" max="9">
+    <button onclick="generateGugudan()">출력</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>구구단</th>
+                <th>결과</th>
+            </tr>
+        </thead>
+        <tbody id="gugudanTableBody"></tbody>
+    </table>
+
+    <script>
+        function generateGugudan() {
+            var inputElement = document.getElementById('gugudanInput');
+            var gugudan = parseInt(inputElement.value);
+
+            if (isNaN(gugudan) || gugudan < 2 || gugudan > 9) {
+                alert('2부터 9까지의 숫자를 입력해주세요.');
+                return;
+            }
+
+            var tableBody = document.getElementById('gugudanTableBody');
+            tableBody.innerHTML = ''; // 테이블 내용 초기화
+
+            var row = document.createElement('tr');
+
+            var gugudanCell = document.createElement('td');
+            gugudanCell.textContent = gugudan + '단';
+            row.appendChild(gugudanCell);
+
+            var resultCell = document.createElement('td');
+            resultCell.textContent = '';
+
+            for (var j = 1; j <= 9; j++) {
+                resultCell.innerHTML += gugudan + ' x ' + j + ' = ' + (gugudan * j) + '<br>';
+            }
+
+            row.appendChild(resultCell);
+            tableBody.appendChild(row);
+        }
+    </script>
+</body>
+</html>
