@@ -1,5 +1,3 @@
-// gugudan.js
-
 const readline = require('readline');
 
 function generateGugudan(gugudan) {
